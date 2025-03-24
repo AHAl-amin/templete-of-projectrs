@@ -63,7 +63,7 @@ function Login() {
               <div className="justify-center flex">
                 <button className=" text-center   items-center bg-[#8CAB91] w-4/5 uppercase text-[16px] text-[#FAF1E6] rounded-[20px] py-2" type="button " name="submit" id=""  
                  
-                > sing in  </button>
+                > login  </button>
               </div>
             </div>
           </div>

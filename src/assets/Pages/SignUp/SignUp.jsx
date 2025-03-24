@@ -6,6 +6,18 @@ import { Link } from "react-router-dom";
 function SignUp() {
 
     const [showPassword, setShowPassword] = useState(false);
+    const handleSubmit = e =>{
+        e.preventDefault();
+
+        const name =e.target.name.value;
+        const email =e.target.email.value;
+        const photo =e.target.photo.value;
+        const password =e.target.password.value;
+        const Users ={name, email, photo, password}
+        console.log(Users)
+        console.log(name,email,photo,password)
+        e.target.reset();
+    }
     return (
         <div className="flex items-center gap-6 justify-evenly md:flex-row flex-col mt-10 ">
             <div className="">
@@ -17,13 +29,13 @@ function SignUp() {
                 <p className="text-[#364636] text-[14px]">
                     Please enter your valid information
                 </p>
-                <form action="">
+                <form onSubmit={handleSubmit} action="">
                     <div className="space-y-6">
                         <div className="text-[#364636]">
                             <span className="text-[#364636] mb-1"> Your Name </span> <br />
                             <input
-                                type="text"
-                                namë="name"
+                                 type="text"
+                                 name="name" 
                                 className="w-full border border-[#8CAB91] rounded-sm p-1 "
                                 placeholder="type your name" required
                             />{" "}
@@ -33,7 +45,8 @@ function SignUp() {
                             <span className="text-[#364636] mb-1"> Email </span> <br />
                             <input
                                 type="email"
-                                namë="email"
+                                
+                                name="email" 
                                 className="w-full border border-[#8CAB91] rounded-sm p-1 "
                                 placeholder="Asadujjaman@gmail.com" required
                             />{" "}
@@ -44,7 +57,8 @@ function SignUp() {
                             <span className="text-[#364636] mb-1"> Photo URL </span> <br />
                             <input
                                 type="text"
-                                namë="photo"
+
+                                 name="photo"
                                 className="w-full border border-[#8CAB91] rounded-sm p-1 "
                                 placeholder="Photo URL" required
                             />{" "}
@@ -54,8 +68,9 @@ function SignUp() {
                         <div className="relative text-[#364636] ">
                             <span className="text-[#364636] mb-1"> Password </span> <br />
                             <input
-                                type={showPassword ? "text" : "password"}
-                                namë="password"
+                                type={showPassword ? "text" : "password"} 
+
+                                name="password"
                                 className=" w-full border  border-[#8CAB91] rounded-sm p-1 "
                                 placeholder="********" required
                             />
@@ -83,11 +98,11 @@ function SignUp() {
                             </div>
 
                             <div className="justify-center flex">
-                                <button className=" text-center   items-center bg-[#8CAB91] w-4/5 uppercase text-[16px] text-[#FAF1E6] rounded-[20px] py-2" type="button " name="submit" id=""
+                                <button className=" text-center   items-center bg-[#8CAB91] w-4/5 uppercase text-[16px] text-[#FAF1E6] rounded-[20px] py-2" type="submit "  id=""
 
-                                > sing in  </button>
+                                > sing up  </button>
                             </div>
-                            <p>Already have an account?Please <Link to='/login' className="text-blue-500 underline">Login</Link></p>
+                            <p className="text-center">Already have an account?<br /> Please <Link to='/login' className="text-blue-500 underline">Login</Link></p>
                         </div>
                     </div>
                 </form>
