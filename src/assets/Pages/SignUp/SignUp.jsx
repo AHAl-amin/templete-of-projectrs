@@ -6,6 +6,11 @@ import { Link } from "react-router-dom";
 function SignUp() {
 
     const [showPassword, setShowPassword] = useState(false);
+    const [signupError, setSignupError] =useState('')
+    // const [signupSuccess, setSignupSuccess]=useState('')
+
+    // const navigate = useNavigate();
+    
     const handleSubmit = e =>{
         e.preventDefault();
 
@@ -15,8 +20,36 @@ function SignUp() {
         const password =e.target.password.value;
         const Users ={name, email, photo, password}
         console.log(Users)
-        console.log(name,email,photo,password)
+        // console.log(name,email,photo,password)
         e.target.reset();
+
+        // reseat error
+        setSignupError("")
+
+        if(password.length < 6 ){
+            setSignupError("Password should be at least 6 characters")
+    
+        }
+        else if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
+            setSignupError("Password should have at least one spacial character")
+    
+        }
+        else if(!/[A-Z]/.test(password)){
+            setSignupError("Password should have at least one uppercase")
+    
+        }
+        else if(!/[a-z]/.test(password)){
+            setSignupError("Password should have at least one Lowercase")
+
+        }
+        
+        else if(!/\d/.test(password)){
+            setSignupError("Password should have at least one numerice")
+
+        }
+
+        // navigate home page
+        // navigate('/')
     }
     return (
         <div className="flex items-center gap-6 justify-evenly md:flex-row flex-col mt-10 ">
@@ -91,9 +124,11 @@ function SignUp() {
                                     <p className="text-[#6A6D7C]"> Remember Password</p>
                                 </div>
                                 <div>
-                                    <p path="/" className="text-[#FF0000]">
-                                        <Link to="/forgetPassword">Forget Password?</Link>
+                                        <Link to="/forgetPassword">
+                                    <p className="text-[#FF0000]">
+                                        Forget Password?
                                     </p>
+                                        </Link>
                                 </div>
                             </div>
 
@@ -104,6 +139,9 @@ function SignUp() {
                             </div>
                             <p className="text-center">Already have an account?<br /> Please <Link to='/login' className="text-blue-500 underline">Login</Link></p>
                         </div>
+                        {
+                            signupError && <p className="text-red-500">{signupError}</p>
+                        }
                     </div>
                 </form>
             </div>

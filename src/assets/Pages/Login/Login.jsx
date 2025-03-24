@@ -1,10 +1,56 @@
 import React, { useState } from "react";
 import { IoEyeOutline , IoEyeOffOutline } from "react-icons/io5";
 import LoginImg01 from "../../../assets/Pages/loginImg.png"
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
   const [showPassword, setShowPassword] = useState(false);
+   const [loginError, setLoginError] =useState('')
+//    const navigate = useNavigate()
+
+
+   const handleSubmit = e =>{
+    e.preventDefault();
+
+ 
+    const email =e.target.email.value;
+  
+    const password =e.target.password.value;
+    const Users = {email, password}
+    console.log(Users)
+    // console.log(name,email,photo,password)
+    e.target.reset();
+
+    // reseat error
+    setLoginError(" ")
+   
+
+    if(password.length < 6 ){
+        setLoginError("Password should be at least 6 characters")
+
+    }
+    else if(!/[!@#$%^&*(),.?":{}|<>]/.test(password)){
+        setLoginError("Password should have at least one spacial character")
+
+    }
+    else if(!/[A-Z]/.test(password)){
+        setLoginError("Password should have at least one uppercase")
+
+    }
+    else if(!/[a-z]/.test(password)){
+        setLoginError("Password should have at least one Lowercase")
+
+    }
+    
+    else if(!/\d/.test(password)){
+        setLoginError("Password should have at least one numerice")
+
+    }
+
+    // navigate home page
+    // navigate('/')
+}
   return (
     <div className="flex items-center gap-6 justify-evenly md:flex-row flex-col mt-10 ">
       <div className="">
@@ -16,13 +62,14 @@ function Login() {
         <p className="text-[#364636] text-[14px]">
           Please enter your email and password to continue
         </p>
-        <form action="">
+        <form onSubmit={handleSubmit} action="">
           <div className="space-y-6">
             <div className="text-[#364636]">
               <span className="text-[#364636] mb-1"> Email </span> <br />
               <input
                 type="email"
-                namë="email"
+                                
+                name="email" 
                 className="w-full border border-[#8CAB91] rounded-sm p-1 "
                 placeholder="Asadujjaman@gmail.com"
               />{" "}
@@ -33,7 +80,8 @@ function Login() {
               <span className="text-[#364636] mb-1"> Password </span> <br />
               <input
                 type={showPassword ? "text" : "password"}
-                namë="password"
+
+                name="password"
                 className=" w-full border  border-[#8CAB91] rounded-sm p-1 "
                 placeholder="********"
               />
@@ -65,6 +113,9 @@ function Login() {
                  
                 > login  </button>
               </div>
+              {
+                loginError && <p className="text-red-400"> {loginError}</p> 
+              }
             </div>
           </div>
         </form>
