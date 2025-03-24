@@ -5,6 +5,9 @@ import {
   } from "react-router-dom";
 import Main from "../../Layouts/Main/Main";
 import Home from "../Pages/Home/Home";
+import { LogIn } from "lucide-react";
+import Login from "../Pages/Login/Login";
+import SignUp from "../Pages/SignUp/SignUp";
 
 
 
@@ -14,8 +17,16 @@ import Home from "../Pages/Home/Home";
       element: <Main></Main>,
       children:[
         {
-            path:"",
+            path:"/",
             element:<Home></Home>
+        },
+        {
+            path:"/login",
+            element:<Login></Login>
+        },
+        {
+          path:"/signup",
+          element:<SignUp></SignUp>
         }
       ]
     },

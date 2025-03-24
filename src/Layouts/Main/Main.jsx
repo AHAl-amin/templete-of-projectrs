@@ -1,14 +1,18 @@
 import React from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Navber from '../../assets/Pages/Navber/Navber'
 import Footer from '../../assets/Pages/Footer/Footer'
 
 function Main() {
+
+  const Location = useLocation();
+  const hideNavberAndFooter =Location.pathname === "/login" || Location.pathname === "/signup";
   return (
     <div>
-        <Navber></Navber>
+       {!hideNavberAndFooter && <Navber></Navber>} 
         <Outlet></Outlet>
-        <Footer></Footer>
+       
+        {!hideNavberAndFooter && <Footer></Footer>} 
     </div>
   )
 }
