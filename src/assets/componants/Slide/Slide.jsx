@@ -4,7 +4,7 @@ import Marquee from 'react-fast-marquee'
 function Slide() {
   return (
     <div>
-      <Marquee speed={100} pauseOnHover={true}  className=''>
+      <Marquee speed={200} pauseOnHover={true}  className=''>
 
         <div className='flex gap-10 shadow-transparent justify-between'>
 

@@ -1,5 +1,7 @@
 import React from 'react'
-import Slide from '../Slide/Slide'
+import Slide from '../../componants/Slide/Slide'
+import Testimonials from '../../componants/Testimonials/Testimonials'
+
 
 
 function Home() {
@@ -7,6 +9,8 @@ function Home() {
     <div>
        <h1>home</h1>
        <Slide></Slide>
+       <Testimonials></Testimonials>
+       
     </div>
   )
 }
